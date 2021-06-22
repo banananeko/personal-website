@@ -1,12 +1,12 @@
 .site-navigation {
     height: 65px;
     width: 100%;
-    background: #164A41;
+    background: $background;
     display: flex;
     justify-content: space-between;
     color: $text-color;
 
-    span {
+    .menu-title {
         font-size: 24px;
         display: flex;
         align-items: center;
@@ -25,6 +25,26 @@
         }
     }
 
+
+    .ant-avatar {
+        background: $background;
+        border: 1px solid $border;
+    }
+
+    .ion-ios-menu {
+        font-size: 36px;
+        width: 65px;
+        align-items: center;
+        cursor: pointer;
+        display: none;
+    }
+
+    .menu-content-container {
+        display: flex;
+        align-items: center;
+        padding-right: 30px;
+    }
+
     ul {
         height: 100%;
         margin-block-start: 0;
@@ -33,7 +53,7 @@
         display: flex;
         align-items: center;
         list-style-type: none;
-        margin-right: 20px;
+        padding: 0 20px 0 50px;
 
         a {
             text-decoration: none;
@@ -46,10 +66,62 @@
             }
         }
 
-        
-
         li {
             margin: 10px;
         }
     }
 }
+
+@media screen and (max-width: 900px) {
+    .site-navigation {
+        .menu-content-container {
+            width: 200px;
+            height: 100%;
+            background: #DADED4;
+            color: $background;
+            position: absolute;
+            right: 1000px;
+            transition-timing-function: linear;
+            flex-direction: column-reverse;
+            padding: 0;
+
+            a {
+                width: 100%;
+                padding-left: 20px;
+                color: $background;
+            }
+
+            li {
+                height: 30px;
+                display: flex;
+                align-items: center;
+            }
+            
+            ul {
+                flex-direction: column;
+                justify-content: flex-start;
+                padding: 0;
+                
+            }
+
+            ul, li {
+                width: 100%;
+            }
+
+            &.active {
+                right: 0;
+                animation: slide 800ms forwards;
+            }
+        }
+        .ion-ios-menu {
+            display: flex;;
+        }
+    }
+}
+@keyframes slide {
+    from { right: -100%; }
+    to {
+      left: 100%;
+      transform: translateX(-100%);
+    }
+  }
